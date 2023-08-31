@@ -1,0 +1,20 @@
+
+; <<>> DiG 9.18.16 <<>> +all example.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 52157
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;example.com.			IN	A
+
+;; ANSWER SECTION:
+example.com.		75789	IN	A	93.184.216.34
+
+;; Query time: 51 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1) (UDP)
+;; WHEN: Wed Aug 30 19:56:52 EDT 2023
+;; MSG SIZE  rcvd: 56
+
