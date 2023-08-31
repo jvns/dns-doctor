@@ -25,7 +25,6 @@ type DigOutputs struct {
 }
 
 func main() {
-	// dns doctor usage: dnsdoctor <record-type> <domain-name> [flags]
 	// example: dnsdoctor A google.com
 	// example: dnsdoctor google.com
 
@@ -50,8 +49,6 @@ func main() {
 			doctor(config)
 		},
 	}
-	// add 2 arguments, one for record type and one for domain name
-	// first one is optional, second one is required
 	cmd.Execute()
 }
 
