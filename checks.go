@@ -18,15 +18,15 @@ type CheckResult struct {
 
 func runCheck(check *Check, config *Config, outputs *DigOutputs) {
 	// color the output based on the result of the check
-	fmt.Println("Running check:", check.ID)
 	result, err := check.Run(config, outputs)
 	if err != nil {
-		fmt.Println("  Error running check: ", err)
+		fmt.Printf("Error running check '%s': %s\n", check.ID, err)
 		return
 	}
 	if result.Status {
-		fmt.Printf("  \033[32mSUCCESS\033[0m: %s\n", result.Message)
+		fmt.Println("\033[32mSUCCESS:\033[0m", check.ID)
 	} else {
+		fmt.Println("\033[31mFAILURE:\033[0m", check.ID)
 		fmt.Printf("  \033[31mFAILURE\033[0m: %s\n", result.Message)
 	}
 }

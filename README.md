@@ -12,6 +12,24 @@ It basically just runs `dig +trace` and `dig +norecurse` on your domain, parses
 the output, and tries to diagnose some problems. You'll need to have `dig`
 installed.
 
+## example output
+
+```
+$ dns-doctor asdfasdfasdf.jvns.ca
+Running check: no-record
+  FAILURE: No record found, using nameserver 'ns-203-c.gandi.net'
+Running check: cache-mismatch
+  SUCCESS: Resolver doesn't have any records cached
+Running check: bad-cname
+  SUCCESS: No CNAME found
+Running check: negative-cache
+  SUCCESS: Resolver doesn't have any records cached
+Running check: no-http
+  SUCCESS: All A records have HTTP and HTTPS
+Running check: cname-root
+  SUCCESS: Skipping: this is a subdomain
+```
+
 ## List of checks
 
 ### **`no-record`**
