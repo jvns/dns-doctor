@@ -8,17 +8,17 @@ import (
 )
 
 type Record struct {
-	name  string
-	ttl   int
-	class string
-	typ   string
-	data  string
+	Name  string
+	TTL   int
+	Class string
+	Type  string
+	Data  string
 }
 
 type Question struct {
-	name  string
-	typ   string
-	class string
+	Name  string
+	Type  string
+	Class string
 }
 
 type DNSResponse struct {
@@ -32,9 +32,9 @@ type DNSResponse struct {
 }
 
 type TraceOutput struct {
-	server  string
-	ip      string
-	records []Record
+	Server  string
+	IP      string
+	Records []Record
 }
 
 func parseQuestion(line string) Question {
@@ -43,9 +43,9 @@ func parseQuestion(line string) Question {
 		panic(fmt.Sprintf("Invalid record: %s", line))
 	}
 	return Question{
-		name:  fields[0],
-		class: fields[1],
-		typ:   fields[2],
+		Name:  fields[0],
+		Class: fields[1],
+		Type:  fields[2],
 	}
 }
 func parseRecord(line string) Record {
@@ -58,11 +58,11 @@ func parseRecord(line string) Record {
 		panic(fmt.Sprintf("Invalid ttl: %s", fields[1]))
 	}
 	return Record{
-		name:  fields[0],
-		ttl:   ttl,
-		class: fields[2],
-		typ:   fields[3],
-		data:  strings.Join(fields[4:], " "),
+		Name:  fields[0],
+		TTL:   ttl,
+		Class: fields[2],
+		Type:  fields[3],
+		Data:  strings.Join(fields[4:], " "),
 	}
 }
 
