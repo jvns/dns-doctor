@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 )
@@ -22,6 +23,8 @@ type Question struct {
 
 type DNSResponse struct {
 	status     string
+	serverIP   string
+	serverName string
 	question   Question
 	answer     []Record
 	authority  []Record
@@ -96,6 +99,16 @@ func parseDigOutput(output string) DNSResponse {
 					break
 				}
 			}
+		} else if strings.Contains(line, "SERVER:") {
+
+			// SERVER: 192.48.79.30#53(j.gtld-servers.net) (UDP)
+			regex := regexp.MustCompile(`SERVER: (.+)#(\d+)\(([\w\.\-]+)\)`)
+			matches := regex.FindStringSubmatch(line)
+			if len(matches) != 4 {
+				panic(fmt.Sprintf("Invalid server line: %s", line))
+			}
+			resp.serverIP = fmt.Sprintf("%s:%s", matches[1], matches[2])
+			resp.serverName = matches[3]
 		} else if part == "question" {
 			resp.question = parseQuestion(line)
 		} else if part == "answer" {
@@ -108,4 +121,13 @@ func parseDigOutput(output string) DNSResponse {
 
 	}
 	return resp
+}
+
+func parseDigTraceOutput(output string) []DNSResponse {
+	parts := strings.Split(output, "Got answer")[1:]
+	responses := make([]DNSResponse, 0)
+	for _, part := range parts {
+		responses = append(responses, parseDigOutput(part))
+	}
+	return responses
 }

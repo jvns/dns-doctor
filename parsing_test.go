@@ -7,17 +7,25 @@ import (
 	"github.com/hexops/autogold/v2"
 )
 
-// put autogold.Expect(nil).Equal(t, got) to make a test
+// to make a test:
+// autogold.Expect(nil).Equal(t, got)
+
+func readFile(t *testing.T, path string) string {
+	t.Helper()
+	output, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return string(output)
+}
 
 func TestParseBasic(t *testing.T) {
-	output, err := os.ReadFile("testdata/dig_example_com.txt")
-	if err != nil {
-		t.Fatalf("Failed to read file: %s", err)
-	}
-	got := parseDigOutput(string(output))
+	got := parseDigOutput(readFile(t, "testdata/dig_example_com.txt"))
 
 	autogold.Expect(DNSResponse{
-		status: "NOERROR", question: Question{
+		status: "NOERROR", serverIP: "192.168.1.1:53",
+		serverName: "192.168.1.1",
+		question: Question{
 			name:  "example.com.",
 			typ:   "A",
 			class: "IN",
@@ -35,14 +43,12 @@ func TestParseBasic(t *testing.T) {
 }
 
 func TestParseRootNameserver(t *testing.T) {
-	output, err := os.ReadFile("testdata/dig_example_com_authority.txt")
-	if err != nil {
-		t.Fatalf("Failed to read file: %s", err)
-	}
-	got := parseDigOutput(string(output))
+	got := parseDigOutput(readFile(t, "testdata/dig_example_com_authority.txt"))
 
 	autogold.Expect(DNSResponse{
-		status: "NOERROR", question: Question{
+		status: "NOERROR", serverIP: "198.41.0.4:53",
+		serverName: "a.root-servers.net",
+		question: Question{
 			name:  "example.com.",
 			typ:   "A",
 			class: "IN",
@@ -324,6 +330,701 @@ func TestParseRootNameserver(t *testing.T) {
 				typ:   "AAAA",
 				data:  "2001:501:b1f9::30",
 			},
+		},
+	}).Equal(t, got)
+}
+
+func TestTrace(t *testing.T) {
+	got := parseDigTraceOutput(readFile(t, "testdata/dig_trace_example_com.txt"))
+	autogold.Expect([]DNSResponse{
+		{
+			status:     "NOERROR",
+			serverIP:   "192.168.1.1:53",
+			serverName: "192.168.1.1",
+			question: Question{
+				name:  ".",
+				typ:   "NS",
+				class: "IN",
+			},
+			answer: []Record{
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "NS",
+					data:  "a.root-servers.net.",
+				},
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "NS",
+					data:  "b.root-servers.net.",
+				},
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "NS",
+					data:  "c.root-servers.net.",
+				},
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "NS",
+					data:  "d.root-servers.net.",
+				},
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "NS",
+					data:  "e.root-servers.net.",
+				},
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "NS",
+					data:  "f.root-servers.net.",
+				},
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "NS",
+					data:  "g.root-servers.net.",
+				},
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "NS",
+					data:  "h.root-servers.net.",
+				},
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "NS",
+					data:  "i.root-servers.net.",
+				},
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "NS",
+					data:  "j.root-servers.net.",
+				},
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "NS",
+					data:  "k.root-servers.net.",
+				},
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "NS",
+					data:  "l.root-servers.net.",
+				},
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "NS",
+					data:  "m.root-servers.net.",
+				},
+				{
+					name:  ".",
+					ttl:   517950,
+					class: "IN",
+					typ:   "RRSIG",
+					data:  "NS 8 0 518400 20230912210000 20230830200000 11019 . iKKR8LMlixZs53amGnK69lRbb91ttySCHMWjIOzbI3eYCOL4f5ZnyJuY yzo1VWA/TlMCM4NJzScyvIVJS5jaz2oKEUDLzm7v9xoFhYMbBL7y7fc+ 8ByPRZ5rYOcRjhimlToRnAPxh8iXG5xsAmlCJ8+vy00eL7l3Sn8bsQaf x7cvq5ZVYpUZ1jf8S1VhJjHrw8iTNYZHPqmoL7DrzszkKSTrZD5Bmzzt I9qVbpWV69F5cyr/uGo1DhH5Sscz0TVGPBAErFW+EfdO/D491T3Bv1bE MR7+m5TwuQTOs6u4vztRyz+GxvMweSl6xoLxhJ75J+D4snnNZPr+EGGz thIwOQ==",
+				},
+			},
+			authority: []Record{},
+			additional: []Record{
+				{
+					name:  "a.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "A",
+					data:  "198.41.0.4",
+				},
+				{
+					name:  "a.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:503:ba3e::2:30",
+				},
+				{
+					name:  "b.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "A",
+					data:  "199.9.14.201",
+				},
+				{
+					name:  "b.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:500:200::b",
+				},
+				{
+					name:  "c.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "A",
+					data:  "192.33.4.12",
+				},
+				{
+					name:  "c.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:500:2::c",
+				},
+				{
+					name:  "d.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "A",
+					data:  "199.7.91.13",
+				},
+				{
+					name:  "d.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:500:2d::d",
+				},
+				{
+					name:  "e.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "A",
+					data:  "192.203.230.10",
+				},
+				{
+					name:  "e.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:500:a8::e",
+				},
+				{
+					name:  "f.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "A",
+					data:  "192.5.5.241",
+				},
+				{
+					name:  "f.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:500:2f::f",
+				},
+				{
+					name:  "g.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "A",
+					data:  "192.112.36.4",
+				},
+				{
+					name:  "g.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:500:12::d0d",
+				},
+				{
+					name:  "h.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "A",
+					data:  "198.97.190.53",
+				},
+				{
+					name:  "h.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:500:1::53",
+				},
+				{
+					name:  "i.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "A",
+					data:  "192.36.148.17",
+				},
+				{
+					name:  "i.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:7fe::53",
+				},
+				{
+					name:  "j.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "A",
+					data:  "192.58.128.30",
+				},
+				{
+					name:  "j.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:503:c27::2:30",
+				},
+				{
+					name:  "k.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "A",
+					data:  "193.0.14.129",
+				},
+				{
+					name:  "k.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:7fd::1",
+				},
+				{
+					name:  "l.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "A",
+					data:  "199.7.83.42",
+				},
+				{
+					name:  "l.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:500:9f::42",
+				},
+				{
+					name:  "m.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "A",
+					data:  "202.12.27.33",
+				},
+				{
+					name:  "m.root-servers.net.",
+					ttl:   517950,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:dc3::35",
+				},
+			},
+		},
+		{
+			status:     "NOERROR",
+			serverIP:   "199.7.83.42:53",
+			serverName: "l.root-servers.net",
+			question: Question{
+				name:  "example.com.",
+				typ:   "A",
+				class: "IN",
+			},
+			answer: []Record{},
+			authority: []Record{
+				{
+					name:  "com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "a.gtld-servers.net.",
+				},
+				{
+					name:  "com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "b.gtld-servers.net.",
+				},
+				{
+					name:  "com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "c.gtld-servers.net.",
+				},
+				{
+					name:  "com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "d.gtld-servers.net.",
+				},
+				{
+					name:  "com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "e.gtld-servers.net.",
+				},
+				{
+					name:  "com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "f.gtld-servers.net.",
+				},
+				{
+					name:  "com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "g.gtld-servers.net.",
+				},
+				{
+					name:  "com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "h.gtld-servers.net.",
+				},
+				{
+					name:  "com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "i.gtld-servers.net.",
+				},
+				{
+					name:  "com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "j.gtld-servers.net.",
+				},
+				{
+					name:  "com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "k.gtld-servers.net.",
+				},
+				{
+					name:  "com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "l.gtld-servers.net.",
+				},
+				{
+					name:  "com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "m.gtld-servers.net.",
+				},
+				{
+					name:  "com.",
+					ttl:   86400,
+					class: "IN",
+					typ:   "DS",
+					data:  "30909 8 2 E2D3C916F6DEEAC73294E8268FB5885044A833FC5459588F4A9184CF C41A5766",
+				},
+				{
+					name:  "com.",
+					ttl:   86400,
+					class: "IN",
+					typ:   "RRSIG",
+					data:  "DS 8 1 86400 20230912210000 20230830200000 11019 . b0f9IhTkzzSIFp5ioeI5YJbcH3/hAdM1kOxkOF3Tl9f69Pytjw2OdA2S NVkS9Ul1SlZYapCa+OJiyHbDjiV1Ub/kqk6yzg6E1JwVQObfHH9j8zvx SmLzCMLuTVGCFZKNyRa0K6axO+x+ZYpwzul6IVzKREsQC9JdUogygyrO ZymGxDMvSj6d9UXT+g2xVGwfuncFklYAdrtM+z5xYIy0XXQbpsZ6Dqsv T1LR/GKAwGGjNXE2RICg8prz92t36G4WUO/AJuf8FoYGFReK3Vhh4G1H 6AXxSN7tYG2fSJ74qPe95xIV7O5JqULVKdKtCYDo3o71+AziVpAbNS4Z vOEbog==",
+				},
+			},
+			additional: []Record{
+				{
+					name:  "a.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "A",
+					data:  "192.5.6.30",
+				},
+				{
+					name:  "a.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:503:a83e::2:30",
+				},
+				{
+					name:  "b.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "A",
+					data:  "192.33.14.30",
+				},
+				{
+					name:  "b.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:503:231d::2:30",
+				},
+				{
+					name:  "c.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "A",
+					data:  "192.26.92.30",
+				},
+				{
+					name:  "c.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:503:83eb::30",
+				},
+				{
+					name:  "d.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "A",
+					data:  "192.31.80.30",
+				},
+				{
+					name:  "d.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:500:856e::30",
+				},
+				{
+					name:  "e.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "A",
+					data:  "192.12.94.30",
+				},
+				{
+					name:  "e.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:502:1ca1::30",
+				},
+				{
+					name:  "f.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "A",
+					data:  "192.35.51.30",
+				},
+				{
+					name:  "f.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:503:d414::30",
+				},
+				{
+					name:  "g.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "A",
+					data:  "192.42.93.30",
+				},
+				{
+					name:  "g.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:503:eea3::30",
+				},
+				{
+					name:  "h.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "A",
+					data:  "192.54.112.30",
+				},
+				{
+					name:  "h.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:502:8cc::30",
+				},
+				{
+					name:  "i.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "A",
+					data:  "192.43.172.30",
+				},
+				{
+					name:  "i.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:503:39c1::30",
+				},
+				{
+					name:  "j.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "A",
+					data:  "192.48.79.30",
+				},
+				{
+					name:  "j.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:502:7094::30",
+				},
+				{
+					name:  "k.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "A",
+					data:  "192.52.178.30",
+				},
+				{
+					name:  "k.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:503:d2d::30",
+				},
+				{
+					name:  "l.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "A",
+					data:  "192.41.162.30",
+				},
+				{
+					name:  "l.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:500:d937::30",
+				},
+				{
+					name:  "m.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "A",
+					data:  "192.55.83.30",
+				},
+				{
+					name:  "m.gtld-servers.net.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "AAAA",
+					data:  "2001:501:b1f9::30",
+				},
+			},
+		},
+		{
+			status:     "NOERROR",
+			serverIP:   "192.35.51.30:53",
+			serverName: "f.gtld-servers.net",
+			question: Question{
+				name:  "example.com.",
+				typ:   "A",
+				class: "IN",
+			},
+			answer: []Record{},
+			authority: []Record{
+				{
+					name:  "example.com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "a.iana-servers.net.",
+				},
+				{
+					name:  "example.com.",
+					ttl:   172800,
+					class: "IN",
+					typ:   "NS",
+					data:  "b.iana-servers.net.",
+				},
+				{
+					name:  "example.com.",
+					ttl:   86400,
+					class: "IN",
+					typ:   "DS",
+					data:  "370 13 2 BE74359954660069D5C63D200C39F5603827D7DD02B56F120EE9F3A8 6764247C",
+				},
+				{
+					name:  "example.com.",
+					ttl:   86400,
+					class: "IN",
+					typ:   "RRSIG",
+					data:  "DS 8 2 86400 20230906062331 20230830051331 4459 com. GMHHwISDn8Yh8+8Y/aTXu9XkZCobOWJ94nPPPYTvRvpUDJfMHV8k2aSO 9lW6xBjeaWtl9MVBRUKIh6CgLH+hZ/V0UHAROh6mt6jKa/3W35OqcULN 8aRsGujntVlByyD3/1Kxki0S8x+wbbymShuqmXC0KQy7Wl0mkimOCwZD +IDk1UhC5zjZnQjFKmJ4SVLb7ayOsbsoQoufx3BNk2kFig==",
+				},
+			},
+			additional: []Record{},
+		},
+		{
+			status:     "NOERROR",
+			serverIP:   "199.43.133.53:53",
+			serverName: "b.iana-servers.net",
+			question: Question{
+				name:  "example.com.",
+				typ:   "A",
+				class: "IN",
+			},
+			answer: []Record{
+				{
+					name:  "example.com.",
+					ttl:   86400,
+					class: "IN",
+					typ:   "A",
+					data:  "93.184.216.34",
+				},
+				{
+					name:  "example.com.",
+					ttl:   86400,
+					class: "IN",
+					typ:   "RRSIG",
+					data:  "A 13 2 86400 20230909025252 20230819070125 2061 example.com. 8adF5DxheCltQ61A6m5kHUfzgsuhY3zPscP9YDB16sDn2bk6Rw7Fz+gI MiixWE2SkLFl7LWN5cLN7B/aGBGUlw==",
+				},
+			},
+			authority: []Record{
+				{
+					name:  "example.com.",
+					ttl:   86400,
+					class: "IN",
+					typ:   "NS",
+					data:  "a.iana-servers.net.",
+				},
+				{
+					name:  "example.com.",
+					ttl:   86400,
+					class: "IN",
+					typ:   "NS",
+					data:  "b.iana-servers.net.",
+				},
+				{
+					name:  "example.com.",
+					ttl:   86400,
+					class: "IN",
+					typ:   "RRSIG",
+					data:  "NS 13 2 86400 20230909053651 20230819070125 2061 example.com. BbDbIs5CLfsfydzBZOcDqZfwRo/YyDZKeKTs3C6RzGgcC5RpBaXYk7Oh XTZ3OjM3y7YDJVNtuPGcB8Ti7WlMZg==",
+				},
+			},
+			additional: []Record{},
 		},
 	}).Equal(t, got)
 }
