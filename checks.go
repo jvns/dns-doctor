@@ -16,19 +16,18 @@ type CheckResult struct {
 	Message string
 }
 
-func runCheck(check *Check, config *Config, outputs *DigOutputs) {
+func runCheck(check *Check, config *Config, outputs *DigOutputs) bool {
 	// color the output based on the result of the check
 	result, err := check.Run(config, outputs)
 	if err != nil {
 		fmt.Printf("Error running check '%s': %s\n", check.ID, err)
-		return
+		return false
 	}
-	if result.Status {
-		fmt.Println("\033[32mSUCCESS:\033[0m", check.ID)
-	} else {
+	if !result.Status {
 		fmt.Println("\033[31mFAILURE:\033[0m", check.ID)
-		fmt.Printf("  \033[31mFAILURE\033[0m: %s\n", result.Message)
+		fmt.Println("  Details:", result.Message)
 	}
+	return result.Status
 }
 
 func filterRecords(records []Record, typ string) []Record {

@@ -4,7 +4,7 @@
 
 You give it a domain name where something is wrong, and it runs a bunch of checks to try to figure out the reason.
 
-**Usage**: `dns-doctor <record-type> your-domain.com` 
+**Usage**: `dns-doctor <optional-record-type> your-domain.com` 
 
 ## How it works
 
@@ -15,19 +15,17 @@ installed.
 ## example output
 
 ```
-$ dns-doctor asdfasdfasdf.jvns.ca
-Running check: no-record
-  FAILURE: No record found, using nameserver 'ns-203-c.gandi.net'
-Running check: cache-mismatch
-  SUCCESS: Resolver doesn't have any records cached
-Running check: bad-cname
-  SUCCESS: No CNAME found
-Running check: negative-cache
-  SUCCESS: Resolver doesn't have any records cached
-Running check: no-http
-  SUCCESS: All A records have HTTP and HTTPS
-Running check: cname-root
-  SUCCESS: Skipping: this is a subdomain
+$ ./dns-doctor cnameroot.com
+FAILURE: cname-root
+  Details: CNAME at root points to 'examplecat.com.'
+$ /dns-doctor asdfasdf.jvns.ca
+FAILURE: no-record
+  Details: No record found, using nameserver 'ns-2-b.gandi.net'
+$ ./dns-doctor bad-ip.ring269.messwithdns.com
+FAILURE: no-http
+  Details: Failed to connect to 203.0.113.0:80
+$ ./dns-doctor example.com
+All checks passed!
 ```
 
 ## List of checks

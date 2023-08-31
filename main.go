@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"strings"
 
 	"github.com/spf13/cobra"
 )
@@ -43,7 +44,7 @@ func main() {
 				config.RecordType = "A"
 				config.Domain = args[0]
 			} else {
-				config.RecordType = args[0]
+				config.RecordType = strings.ToUpper(args[0])
 				config.Domain = args[1]
 			}
 			doctor(config)
@@ -65,12 +66,23 @@ func doctor(config *Config) {
 		cnameNoRecurse:    runDigCNAMENorecurse(config, cname),
 	}
 
-	runCheck(CheckNoRecord, config, outputs)
-	runCheck(CheckCacheMismatch, config, outputs)
-	runCheck(CheckBadCNAME, config, outputs)
-	runCheck(CheckNegativeCache, config, outputs)
-	runCheck(CheckNoHTTP, config, outputs)
-	runCheck(CheckCnameRoot, config, outputs)
+	checks := []*Check{
+		CheckNoRecord,
+		CheckCacheMismatch,
+		CheckBadCNAME,
+		CheckNegativeCache,
+		CheckNoHTTP,
+		CheckCnameRoot,
+	}
+
+	allGood := true
+	for _, check := range checks {
+		result := runCheck(check, config, outputs)
+		allGood = allGood && result
+	}
+	if allGood {
+		fmt.Println("All checks passed!")
+	}
 }
 
 func run(cmd *exec.Cmd) string {
