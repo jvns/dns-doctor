@@ -103,7 +103,7 @@ func parseDigOutput(output string) DNSResponse {
 		} else if strings.Contains(line, "SERVER:") {
 
 			// SERVER: 192.48.79.30#53(j.gtld-servers.net) (UDP)
-			regex := regexp.MustCompile(`SERVER: (.+)#(\d+)\(([\w\.\-]+)\)`)
+			regex := regexp.MustCompile(`SERVER: (.+)#(\d+)\(([\w:\.\-]+)\)`)
 			matches := regex.FindStringSubmatch(line)
 			if len(matches) != 4 {
 				panic(fmt.Sprintf("Invalid server line: %s", line))
