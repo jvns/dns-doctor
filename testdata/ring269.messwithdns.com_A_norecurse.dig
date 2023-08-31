@@ -1,0 +1,20 @@
+
+; <<>> DiG 9.18.16 <<>> +all +norecurse A ring269.messwithdns.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 11236
+;; flags: qr ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;ring269.messwithdns.com.	IN	A
+
+;; ANSWER SECTION:
+ring269.messwithdns.com. 267	IN	A	1.2.3.4
+
+;; Query time: 10 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1) (UDP)
+;; WHEN: Thu Aug 31 07:12:06 EDT 2023
+;; MSG SIZE  rcvd: 68
+
