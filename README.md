@@ -1,5 +1,7 @@
 ## dns doctor
 
+**WORK IN PROGRESS, DOES NOT REALLY WORK YET**
+
 You give it a domain name where something is wrong, and it runs a bunch of checks to try to figure out the reason.
 
 **Usage**: `dns-doctor <record-type> your-domain.com` 
