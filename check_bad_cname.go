@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 var CheckBadCNAME = &Check{
-	ID:  "check-bad-cname",
+	ID:  "bad-cname",
 	Run: checkBadCNAME,
 }
 

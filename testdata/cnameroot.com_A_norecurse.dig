@@ -1,17 +1,17 @@
 
-; <<>> DiG 9.18.16 <<>> +all +norecurse A www.github.com
+; <<>> DiG 9.18.16 <<>> +all +norecurse A cnameroot.com
 ;; global options: +cmd
 ;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: SERVFAIL, id: 10576
+;; ->>HEADER<<- opcode: QUERY, status: SERVFAIL, id: 7194
 ;; flags: qr ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
 
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags:; udp: 1232
 ;; QUESTION SECTION:
-;www.github.com.			IN	A
+;cnameroot.com.			IN	A
 
-;; Query time: 15 msec
+;; Query time: 37 msec
 ;; SERVER: 192.168.1.1#53(192.168.1.1) (UDP)
-;; WHEN: Thu Aug 31 12:04:00 EDT 2023
-;; MSG SIZE  rcvd: 43
+;; WHEN: Thu Aug 31 12:00:50 EDT 2023
+;; MSG SIZE  rcvd: 42
 

@@ -10,27 +10,25 @@ You give it a domain name where something is wrong, and it runs a bunch of check
 
 ### **`no-record`**
 
-### How `no-record` is implemented
+#### How it's implemented
 
 1. Look up the record with the authoritative nameserver (the equivalent of `dig +trace some.domain.com`)
 2. If there's no matching record, fail this check
 
-#### How to fix `no-record`
+#### How to fix it
 
 DNS Doctor will give you the domain name of the nameservers where your record is set. That should give you a clue about where to fix it
 
 
 ### **`cache-mismatch`**
 
-#### How `cache-mismatch` is implemented:
+#### How it's implemented
 
 1. Look up the record with the authoritative nameserver (the equivalent of `dig +trace some.domain.com`)
-2. Look up the record with the local resolver (the equivalent of `dig some.domain.com`)
+2. Look up the record with the local resolver (the equivalent of `dig +norecurse some.domain.com`)
 3. If the record the local resolver returns is outdated (if it's not), fail this check
 
-It also runs the same check with a few popular resolvers (`8.8.8.8`, `1.1.1.1`)
-
-#### How to fix `cache-mismatch`:
+#### How to fix it:
 
 You just gotta wait! `DNS Doctor` will tell you how long you have to wait. It
 figures that out by looking at the TTL (time to live) of the cached record.

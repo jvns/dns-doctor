@@ -7,7 +7,7 @@ import (
 )
 
 var CheckNoHTTP = &Check{
-	ID:  "check-no-http",
+	ID:  "no-http",
 	Run: checkNoHTTP,
 }
 

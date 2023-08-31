@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 var CheckNoRecord = &Check{
-	ID:  "check-no-record",
+	ID:  "no-record",
 	Run: checkNoRecord,
 }
 

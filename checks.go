@@ -18,7 +18,7 @@ type CheckResult struct {
 
 func runCheck(check *Check, config *Config, outputs *DigOutputs) {
 	// color the output based on the result of the check
-	fmt.Println("Running check: ", check.ID)
+	fmt.Println("Running check:", check.ID)
 	result, err := check.Run(config, outputs)
 	if err != nil {
 		fmt.Println("  Error running check: ", err)

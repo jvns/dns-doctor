@@ -1,8 +1,8 @@
 
-; <<>> DiG 9.18.16 <<>> +all +norecurse A github.com.
+; <<>> DiG 9.18.16 <<>> +all +norecurse A github.com
 ;; global options: +cmd
 ;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 50793
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 4094
 ;; flags: qr ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
 
 ;; OPT PSEUDOSECTION:
@@ -11,10 +11,10 @@
 ;github.com.			IN	A
 
 ;; ANSWER SECTION:
-github.com.		52	IN	A	140.82.113.3
+github.com.		16	IN	A	140.82.114.3
 
-;; Query time: 30 msec
+;; Query time: 15 msec
 ;; SERVER: 192.168.1.1#53(192.168.1.1) (UDP)
-;; WHEN: Thu Aug 31 12:04:01 EDT 2023
+;; WHEN: Thu Aug 31 12:02:45 EDT 2023
 ;; MSG SIZE  rcvd: 55
 

@@ -13,7 +13,7 @@ func TestCheckBadCNAMENone(t *testing.T) {
 
 func TestCheckBadCNAMEOK(t *testing.T) {
 	got := testRunCheckCNAME(t, CheckBadCNAME, "www.github.com", "A", "github.com.")
-	autogold.Expect(&CheckResult{Status: true, Message: "Record found for CNAME domain 'github.com.': 140.82.114.4"}).Equal(t, got)
+	autogold.Expect(&CheckResult{Status: true, Message: "Record found for CNAME domain 'github.com.': 140.82.112.3"}).Equal(t, got)
 }
 
 func TestCheckBadCNAMEFail(t *testing.T) {
