@@ -85,7 +85,7 @@ func run(cmd *exec.Cmd) string {
 func runDigTrace(config *Config) []DNSResponse {
 	cmd := exec.Command("dig", "+trace", "+all", config.RecordType, config.Domain)
 	stdout := run(cmd)
-	writeFile(config.Domain+"_"+config.RecordType+"_trace.dig", stdout)
+	logQuery(config.Domain+"_"+config.RecordType+"_trace.dig", stdout)
 	trace := parseDigTraceOutput(stdout)
 	if len(trace) == 0 {
 		fmt.Println("No trace output found")
@@ -97,14 +97,14 @@ func runDigTrace(config *Config) []DNSResponse {
 func runDigNorecurse(config *Config) DNSResponse {
 	cmd := exec.Command("dig", "+all", "+norecurse", config.RecordType, config.Domain)
 	stdout := run(cmd)
-	writeFile(config.Domain+"_"+config.RecordType+"_norecurse.dig", string(stdout))
+	logQuery(config.Domain+"_"+config.RecordType+"_norecurse.dig", string(stdout))
 	return parseDigOutput(stdout)
 }
 
 func runDig(config *Config) DNSResponse {
 	cmd := exec.Command("dig", "+all", config.RecordType, config.Domain)
 	stdout := run(cmd)
-	writeFile(config.Domain+"_"+config.RecordType+".dig", string(stdout))
+	logQuery(config.Domain+"_"+config.RecordType+".dig", string(stdout))
 	return parseDigOutput(stdout)
 }
 
@@ -139,9 +139,9 @@ func runDigCNAMENorecurse(rootConfig *Config, cname string) *DNSResponse {
 	return &resp
 }
 
-func writeFile(filename string, contents string) {
-	// return
-	f, err := os.Create("testdata/" + filename)
+func logQuery(filename string, contents string) {
+	os.MkdirAll("/tmp/dns-doctor-logs/", os.ModePerm)
+	f, err := os.Create("/tmp/dns-doctor-logs/" + filename)
 	if err != nil {
 		fmt.Printf("error creating file %v: %v", filename, err)
 		os.Exit(1)
