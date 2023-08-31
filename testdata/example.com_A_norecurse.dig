@@ -2,7 +2,7 @@
 ; <<>> DiG 9.18.16 <<>> +all +norecurse A example.com
 ;; global options: +cmd
 ;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 9213
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5396
 ;; flags: qr ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
 
 ;; OPT PSEUDOSECTION:
@@ -11,10 +11,10 @@
 ;example.com.			IN	A
 
 ;; ANSWER SECTION:
-example.com.		78537	IN	A	93.184.216.34
+example.com.		81350	IN	A	93.184.216.34
 
-;; Query time: 18 msec
+;; Query time: 27 msec
 ;; SERVER: 192.168.1.1#53(192.168.1.1) (UDP)
-;; WHEN: Thu Aug 31 07:59:47 EDT 2023
+;; WHEN: Thu Aug 31 10:01:15 EDT 2023
 ;; MSG SIZE  rcvd: 56
 

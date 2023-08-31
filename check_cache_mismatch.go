@@ -1,17 +1,3 @@
-/*
-### **`cache-mismatch`**
-
-#### How `cache-mismatch` is implemented:
-
-1. Look up the record with the authoritative nameserver (the equivalent of `dig +trace some.domain.com`)
-2. Look up the record with the local resolver (the equivalent of `dig some.domain.com`)
-3. If the record the local resolver returns is outdated (if it's not), fail this check
-
-It also runs the same check with a few popular resolvers (`8.8.8.8`, `1.1.1.1`)
-
-
-*/
-
 package main
 
 import "fmt"

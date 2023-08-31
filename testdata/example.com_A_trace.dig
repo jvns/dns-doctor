@@ -2,7 +2,7 @@
 ; <<>> DiG 9.18.16 <<>> +trace +all A example.com
 ;; global options: +cmd
 ;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 30031
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 10811
 ;; flags: qr aa rd ra; QUERY: 1, ANSWER: 14, AUTHORITY: 0, ADDITIONAL: 27
 
 ;; OPT PSEUDOSECTION:
@@ -11,80 +11,80 @@
 ;.				IN	NS
 
 ;; ANSWER SECTION:
-.			512864	IN	NS	a.root-servers.net.
-.			512864	IN	NS	b.root-servers.net.
-.			512864	IN	NS	c.root-servers.net.
-.			512864	IN	NS	d.root-servers.net.
-.			512864	IN	NS	e.root-servers.net.
-.			512864	IN	NS	f.root-servers.net.
-.			512864	IN	NS	g.root-servers.net.
-.			512864	IN	NS	h.root-servers.net.
-.			512864	IN	NS	i.root-servers.net.
-.			512864	IN	NS	j.root-servers.net.
-.			512864	IN	NS	k.root-servers.net.
-.			512864	IN	NS	l.root-servers.net.
-.			512864	IN	NS	m.root-servers.net.
-.			512864	IN	RRSIG	NS 8 0 518400 20230913050000 20230831040000 11019 . sTegTb4O1m5gsG6/bNYMthI0KmGTq0sqyKzys6J9GjN05eew+r+hommx jkUk2k0SL8gFMvEOTCmObUw94Ln6qHK5FbyThvQFvxzF7TMBc+YIVEAU 9qYKNNcB+kXOdkrSYVUjFFKfIWbczm/4XhvAv8GkZqbNKEJwkgyKi9bH ippRdD67TNBWoaij+Q8XvlwnHXP3xfiptcTuxtsx8zSlBzVvKMb2GvlL W/Uf6QR+eL5QstjrqOv6TCMPz5UBtEQbuPBiZWArdsERT/3WH8Qir6Rq sFGpVbXijVDFykKxR3Cjby5zB/iQGlAdxFUY2uwJvvVu1dR/WE/G2IoG OUsTMw==
+.			511710	IN	NS	a.root-servers.net.
+.			511710	IN	NS	b.root-servers.net.
+.			511710	IN	NS	c.root-servers.net.
+.			511710	IN	NS	d.root-servers.net.
+.			511710	IN	NS	e.root-servers.net.
+.			511710	IN	NS	f.root-servers.net.
+.			511710	IN	NS	g.root-servers.net.
+.			511710	IN	NS	h.root-servers.net.
+.			511710	IN	NS	i.root-servers.net.
+.			511710	IN	NS	j.root-servers.net.
+.			511710	IN	NS	k.root-servers.net.
+.			511710	IN	NS	l.root-servers.net.
+.			511710	IN	NS	m.root-servers.net.
+.			511710	IN	RRSIG	NS 8 0 518400 20230913050000 20230831040000 11019 . sTegTb4O1m5gsG6/bNYMthI0KmGTq0sqyKzys6J9GjN05eew+r+hommx jkUk2k0SL8gFMvEOTCmObUw94Ln6qHK5FbyThvQFvxzF7TMBc+YIVEAU 9qYKNNcB+kXOdkrSYVUjFFKfIWbczm/4XhvAv8GkZqbNKEJwkgyKi9bH ippRdD67TNBWoaij+Q8XvlwnHXP3xfiptcTuxtsx8zSlBzVvKMb2GvlL W/Uf6QR+eL5QstjrqOv6TCMPz5UBtEQbuPBiZWArdsERT/3WH8Qir6Rq sFGpVbXijVDFykKxR3Cjby5zB/iQGlAdxFUY2uwJvvVu1dR/WE/G2IoG OUsTMw==
 
 ;; ADDITIONAL SECTION:
-a.root-servers.net.	512864	IN	A	198.41.0.4
-a.root-servers.net.	512864	IN	AAAA	2001:503:ba3e::2:30
-b.root-servers.net.	512864	IN	A	199.9.14.201
-b.root-servers.net.	512864	IN	AAAA	2001:500:200::b
-c.root-servers.net.	512864	IN	A	192.33.4.12
-c.root-servers.net.	512864	IN	AAAA	2001:500:2::c
-d.root-servers.net.	512864	IN	A	199.7.91.13
-d.root-servers.net.	512864	IN	AAAA	2001:500:2d::d
-e.root-servers.net.	512864	IN	A	192.203.230.10
-e.root-servers.net.	512864	IN	AAAA	2001:500:a8::e
-f.root-servers.net.	512864	IN	A	192.5.5.241
-f.root-servers.net.	512864	IN	AAAA	2001:500:2f::f
-g.root-servers.net.	512864	IN	A	192.112.36.4
-g.root-servers.net.	512864	IN	AAAA	2001:500:12::d0d
-h.root-servers.net.	512864	IN	A	198.97.190.53
-h.root-servers.net.	512864	IN	AAAA	2001:500:1::53
-i.root-servers.net.	512864	IN	A	192.36.148.17
-i.root-servers.net.	512864	IN	AAAA	2001:7fe::53
-j.root-servers.net.	512864	IN	A	192.58.128.30
-j.root-servers.net.	512864	IN	AAAA	2001:503:c27::2:30
-k.root-servers.net.	512864	IN	A	193.0.14.129
-k.root-servers.net.	512864	IN	AAAA	2001:7fd::1
-l.root-servers.net.	512864	IN	A	199.7.83.42
-l.root-servers.net.	512864	IN	AAAA	2001:500:9f::42
-m.root-servers.net.	512864	IN	A	202.12.27.33
-m.root-servers.net.	512864	IN	AAAA	2001:dc3::35
+a.root-servers.net.	511710	IN	A	198.41.0.4
+a.root-servers.net.	511710	IN	AAAA	2001:503:ba3e::2:30
+b.root-servers.net.	511710	IN	A	199.9.14.201
+b.root-servers.net.	511710	IN	AAAA	2001:500:200::b
+c.root-servers.net.	511710	IN	A	192.33.4.12
+c.root-servers.net.	511710	IN	AAAA	2001:500:2::c
+d.root-servers.net.	511710	IN	A	199.7.91.13
+d.root-servers.net.	511710	IN	AAAA	2001:500:2d::d
+e.root-servers.net.	511710	IN	A	192.203.230.10
+e.root-servers.net.	511710	IN	AAAA	2001:500:a8::e
+f.root-servers.net.	511710	IN	A	192.5.5.241
+f.root-servers.net.	511710	IN	AAAA	2001:500:2f::f
+g.root-servers.net.	511710	IN	A	192.112.36.4
+g.root-servers.net.	511710	IN	AAAA	2001:500:12::d0d
+h.root-servers.net.	511710	IN	A	198.97.190.53
+h.root-servers.net.	511710	IN	AAAA	2001:500:1::53
+i.root-servers.net.	511710	IN	A	192.36.148.17
+i.root-servers.net.	511710	IN	AAAA	2001:7fe::53
+j.root-servers.net.	511710	IN	A	192.58.128.30
+j.root-servers.net.	511710	IN	AAAA	2001:503:c27::2:30
+k.root-servers.net.	511710	IN	A	193.0.14.129
+k.root-servers.net.	511710	IN	AAAA	2001:7fd::1
+l.root-servers.net.	511710	IN	A	199.7.83.42
+l.root-servers.net.	511710	IN	AAAA	2001:500:9f::42
+m.root-servers.net.	511710	IN	A	202.12.27.33
+m.root-servers.net.	511710	IN	AAAA	2001:dc3::35
 
-;; Query time: 17 msec
+;; Query time: 22 msec
 ;; SERVER: 192.168.1.1#53(192.168.1.1) (UDP)
-;; WHEN: Thu Aug 31 07:59:46 EDT 2023
+;; WHEN: Thu Aug 31 10:01:14 EDT 2023
 ;; MSG SIZE  rcvd: 1097
 
 ;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 8168
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 11488
 ;; flags: qr; QUERY: 1, ANSWER: 0, AUTHORITY: 15, ADDITIONAL: 27
 
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags: do; udp: 1232
-; COOKIE: bf0b9f9604b9ead40100000064f080b358c2b8d1045c20e1 (good)
+; COOKIE: 20a3119bb19465d50100000064f09d2b22a5ce25552b42c0 (good)
 ;; QUESTION SECTION:
 ;example.com.			IN	A
 
 ;; AUTHORITY SECTION:
-com.			172800	IN	NS	i.gtld-servers.net.
+com.			172800	IN	NS	c.gtld-servers.net.
 com.			172800	IN	NS	m.gtld-servers.net.
 com.			172800	IN	NS	l.gtld-servers.net.
 com.			172800	IN	NS	b.gtld-servers.net.
-com.			172800	IN	NS	d.gtld-servers.net.
-com.			172800	IN	NS	e.gtld-servers.net.
-com.			172800	IN	NS	k.gtld-servers.net.
-com.			172800	IN	NS	f.gtld-servers.net.
-com.			172800	IN	NS	h.gtld-servers.net.
-com.			172800	IN	NS	a.gtld-servers.net.
 com.			172800	IN	NS	j.gtld-servers.net.
+com.			172800	IN	NS	i.gtld-servers.net.
+com.			172800	IN	NS	e.gtld-servers.net.
+com.			172800	IN	NS	d.gtld-servers.net.
+com.			172800	IN	NS	h.gtld-servers.net.
+com.			172800	IN	NS	f.gtld-servers.net.
 com.			172800	IN	NS	g.gtld-servers.net.
-com.			172800	IN	NS	c.gtld-servers.net.
+com.			172800	IN	NS	k.gtld-servers.net.
+com.			172800	IN	NS	a.gtld-servers.net.
 com.			86400	IN	DS	30909 8 2 E2D3C916F6DEEAC73294E8268FB5885044A833FC5459588F4A9184CF C41A5766
-com.			86400	IN	RRSIG	DS 8 1 86400 20230913050000 20230831040000 11019 . SDSqlwjZKrqNVP2SV+cRQEaiBBNvx8tIP8+tbNmNGyi9LqcDEKCWB5J8 3qfhueg/Wg31In3vFA7InAoeCciGeBXegT+iNdPNRt+/L2oXk5WYteQI YpQ9TvjilFBmvbfrfoJUxCe4yQsN7cMsvOB17e9OpWAdZxTdjra7qT+I GkHCzIhWJJ0y1LlpqGOSwPff2N3QABYzndPE5K/8Jn0kQaXS4yPSKN/G 6uGag6wrdb3e6wcLwg0iOe0B7cjBODKJF1OfnfIjdjd59w8uQfK8Zs9z 4etaabDHVcYrLCtVZeRU3uZ8jDYhw7O6EqjBQYgUZkEMe5TDIML7M+CT eP70VQ==
+com.			86400	IN	RRSIG	DS 8 1 86400 20230913130000 20230831120000 11019 . WEysarPyDRpInVdiVOqRuMRdwfFAy9OIWUBA+T2ogNdmYK9Lsax7zKZC n2h4Y4VTjIyN7YXh6uuCrWZf0Zcq/YOzib6PwWmTqzXTiNyEm/kKSP9f J1rC/BJWe0sBxvmInqG7hqOAvBzPohA2f03p8feO1ZfpGQduMHtGvOvr IMJ8VrWUaxqcqntV2AYeIVSPUAnEboiCCfS8eUgMQGV7TCcC8s1X/zXT FjU6Qw6bs98QV+KEoQbYnCFlGF0CyKyB506hXeywjFVVIFbabITHeQ4q C4CU+EId9g5o6XHvevTuazoXJixh1EaWs0/Om+Lh2NX7Z/K6xVJ3kzsE J0Twuw==
 
 ;; ADDITIONAL SECTION:
 m.gtld-servers.net.	172800	IN	A	192.55.83.30
@@ -114,13 +114,13 @@ c.gtld-servers.net.	172800	IN	AAAA	2001:503:83eb::30
 b.gtld-servers.net.	172800	IN	AAAA	2001:503:231d::2:30
 a.gtld-servers.net.	172800	IN	AAAA	2001:503:a83e::2:30
 
-;; Query time: 19 msec
+;; Query time: 25 msec
 ;; SERVER: 192.36.148.17#53(i.root-servers.net) (UDP)
-;; WHEN: Thu Aug 31 07:59:47 EDT 2023
+;; WHEN: Thu Aug 31 10:01:15 EDT 2023
 ;; MSG SIZE  rcvd: 1199
 
 ;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 41030
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 19460
 ;; flags: qr; QUERY: 1, ANSWER: 0, AUTHORITY: 4, ADDITIONAL: 1
 
 ;; OPT PSEUDOSECTION:
@@ -134,14 +134,14 @@ example.com.		172800	IN	NS	b.iana-servers.net.
 example.com.		86400	IN	DS	370 13 2 BE74359954660069D5C63D200C39F5603827D7DD02B56F120EE9F3A8 6764247C
 example.com.		86400	IN	RRSIG	DS 8 2 86400 20230906062331 20230830051331 4459 com. GMHHwISDn8Yh8+8Y/aTXu9XkZCobOWJ94nPPPYTvRvpUDJfMHV8k2aSO 9lW6xBjeaWtl9MVBRUKIh6CgLH+hZ/V0UHAROh6mt6jKa/3W35OqcULN 8aRsGujntVlByyD3/1Kxki0S8x+wbbymShuqmXC0KQy7Wl0mkimOCwZD +IDk1UhC5zjZnQjFKmJ4SVLb7ayOsbsoQoufx3BNk2kFig==
 
-;; Query time: 35 msec
-;; SERVER: 192.35.51.30#53(f.gtld-servers.net) (UDP)
-;; WHEN: Thu Aug 31 07:59:47 EDT 2023
+;; Query time: 43 msec
+;; SERVER: 192.41.162.30#53(l.gtld-servers.net) (UDP)
+;; WHEN: Thu Aug 31 10:01:15 EDT 2023
 ;; MSG SIZE  rcvd: 331
 
 ;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 25137
-;; flags: qr aa; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 47868
+;; flags: qr aa; QUERY: 1, ANSWER: 2, AUTHORITY: 3, ADDITIONAL: 1
 
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags: do; udp: 4096
@@ -152,8 +152,13 @@ example.com.		86400	IN	RRSIG	DS 8 2 86400 20230906062331 20230830051331 4459 com
 example.com.		86400	IN	A	93.184.216.34
 example.com.		86400	IN	RRSIG	A 13 2 86400 20230909025252 20230819070125 2061 example.com. 8adF5DxheCltQ61A6m5kHUfzgsuhY3zPscP9YDB16sDn2bk6Rw7Fz+gI MiixWE2SkLFl7LWN5cLN7B/aGBGUlw==
 
-;; Query time: 25 msec
-;; SERVER: 199.43.135.53#53(a.iana-servers.net) (UDP)
-;; WHEN: Thu Aug 31 07:59:47 EDT 2023
-;; MSG SIZE  rcvd: 163
+;; AUTHORITY SECTION:
+example.com.		86400	IN	NS	a.iana-servers.net.
+example.com.		86400	IN	NS	b.iana-servers.net.
+example.com.		86400	IN	RRSIG	NS 13 2 86400 20230909053651 20230819070125 2061 example.com. BbDbIs5CLfsfydzBZOcDqZfwRo/YyDZKeKTs3C6RzGgcC5RpBaXYk7Oh XTZ3OjM3y7YDJVNtuPGcB8Ti7WlMZg==
+
+;; Query time: 28 msec
+;; SERVER: 199.43.133.53#53(b.iana-servers.net) (UDP)
+;; WHEN: Thu Aug 31 10:01:15 EDT 2023
+;; MSG SIZE  rcvd: 318
 

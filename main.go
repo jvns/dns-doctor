@@ -69,6 +69,7 @@ func doctor(config *Config) {
 	runCheck(CheckCacheMismatch, config, outputs)
 	runCheck(CheckBadCNAME, config, outputs)
 	runCheck(CheckNegativeCache, config, outputs)
+	runCheck(CheckNoHTTP, config, outputs)
 }
 
 func run(cmd *exec.Cmd) string {
