@@ -1,23 +1,12 @@
 package main
 
 import (
-	"os"
 	"testing"
 
 	"github.com/hexops/autogold/v2"
 )
 
-// to make a test:
 // autogold.Expect(nil).Equal(t, got)
-
-func readFile(t *testing.T, path string) string {
-	t.Helper()
-	output, err := os.ReadFile(path)
-	if err != nil {
-		t.Fatal(err)
-	}
-	return string(output)
-}
 
 func TestParseBasic(t *testing.T) {
 	got := parseDigOutput(readFile(t, "testdata/dig_example_com.txt"))

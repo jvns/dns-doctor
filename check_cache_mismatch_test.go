@@ -7,8 +7,7 @@ import (
 )
 
 func TestCacheMismatchFail(t *testing.T) {
-	domain := "ring269.messwithdns.com"
-	got := testRunCheck(t, CheckCacheMismatch, domain, "A")
+	got := testRunCheck(t, CheckCacheMismatch, "ring269.messwithdns.com", "A")
 	autogold.Expect(&CheckResult{Status: false, Message: `Cached records don't match authoritative records:
 Only in resolver:
 ring269.messwithdns.com. 267 A 1.2.3.4
