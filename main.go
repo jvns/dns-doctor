@@ -55,7 +55,7 @@ func doctor(config *Config) {
 	outputs := &DigOutputs{
 		trace: runDigTrace(config),
 		//resolver:          runDig(config),
-		resolverNoRecurse: runDig(config),
+		resolverNoRecurse: runDigNorecurse(config),
 	}
 
 	runCheck(CheckNoRecord, config, outputs)
@@ -71,11 +71,24 @@ func runDigTrace(config *Config) []DNSResponse {
 		os.Exit(1)
 	}
 	trace := parseDigTraceOutput(string(stdout))
+	writeFile(config.Domain+"_"+config.RecordType+"_trace.dig", string(stdout))
 	if len(trace) == 0 {
 		fmt.Println("No trace output found")
 		os.Exit(1)
 	}
 	return trace
+}
+
+func runDigNorecurse(config *Config) DNSResponse {
+	// run dig +all +trace {record_type} {domain}
+	cmd := exec.Command("dig", "+all", "+norecurse", config.RecordType, config.Domain)
+	stdout, err := cmd.Output()
+	if err != nil {
+		fmt.Printf("error running `%v`: %v", cmd, err)
+		os.Exit(1)
+	}
+	writeFile(config.Domain+"_"+config.RecordType+"_norecurse.dig", string(stdout))
+	return parseDigOutput(string(stdout))
 }
 
 func runDig(config *Config) DNSResponse {
@@ -86,5 +99,21 @@ func runDig(config *Config) DNSResponse {
 		fmt.Printf("error running `%v`: %v", cmd, err)
 		os.Exit(1)
 	}
+	writeFile(config.Domain+"_"+config.RecordType+".dig", string(stdout))
 	return parseDigOutput(string(stdout))
+}
+
+func writeFile(filename string, contents string) {
+	// return
+	f, err := os.Create("testdata/" + filename)
+	if err != nil {
+		fmt.Printf("error creating file %v: %v", filename, err)
+		os.Exit(1)
+	}
+	defer f.Close()
+	_, err = f.WriteString(contents)
+	if err != nil {
+		fmt.Printf("error writing to file %v: %v", filename, err)
+		os.Exit(1)
+	}
 }

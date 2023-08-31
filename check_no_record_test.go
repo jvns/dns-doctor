@@ -25,11 +25,11 @@ func testRunCheck(t *testing.T, traceFilename string, resolverFilename string, r
 }
 
 func TestCheckNoRecordFail(t *testing.T) {
-	got := testRunCheck(t, "no_record_fail.txt", "resolver_no_record_fail.txt", "A", "exampleffff.com")
+	got := testRunCheck(t, "exampleffff.com_A_trace.dig", "exampleffff.com_A_norecurse.dig", "A", "exampleffff.com")
 	autogold.Expect(&CheckResult{Status: false, Message: "No record found"}).Equal(t, got)
 }
 
 func TestCheckNoRecordSucceed(t *testing.T) {
-	got := testRunCheck(t, "dig_trace_example_com.txt", "example_com_norecurse.txt", "A", "exampleffff.com")
+	got := testRunCheck(t, "example.com_A_trace.dig", "example.com_A_norecurse.dig", "A", "example.com")
 	autogold.Expect(&CheckResult{Status: true, Message: "Found record: '93.184.216.34'"}).Equal(t, got)
 }

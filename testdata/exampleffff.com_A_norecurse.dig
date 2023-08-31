@@ -1,17 +1,17 @@
 
-; <<>> DiG 9.18.16 <<>> +all +norecurse exampleffff.com
+; <<>> DiG 9.18.16 <<>> +all +norecurse A exampleffff.com
 ;; global options: +cmd
 ;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: SERVFAIL, id: 23343
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 60509
 ;; flags: qr ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
 
 ;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 1232
+; EDNS: version: 0, flags:; udp: 4096
 ;; QUESTION SECTION:
 ;exampleffff.com.		IN	A
 
-;; Query time: 42 msec
+;; Query time: 22 msec
 ;; SERVER: 192.168.1.1#53(192.168.1.1) (UDP)
-;; WHEN: Thu Aug 31 06:56:39 EDT 2023
+;; WHEN: Thu Aug 31 07:07:08 EDT 2023
 ;; MSG SIZE  rcvd: 44
 
