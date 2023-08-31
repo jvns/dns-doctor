@@ -1,14 +1,22 @@
 ## dns doctor
 
-**PROTOTYPE, DOES NOT REALLY WORK YET**
+**PROTOTYPE, PROBABLY HAS ONE MILLION BUGS**
 
 You give it a domain name where something is wrong, and it runs a bunch of checks to try to figure out the reason.
 
 **Usage**: `dns-doctor <record-type> your-domain.com` 
 
+## How it works
+
+It basically just runs `dig +trace` and `dig +norecurse` on your domain, parses
+the output, and tries to diagnose some problems. You'll need to have `dig`
+installed.
+
 ## List of checks
 
 ### **`no-record`**
+
+Checks to see if your authoritative nameserver actually just doesn't have a record set.
 
 #### How it's implemented
 
@@ -21,6 +29,8 @@ DNS Doctor will give you the domain name of the nameservers where your record is
 
 
 ### **`cache-mismatch`**
+
+Checks to see if your local resolver has an old cached version.
 
 #### How it's implemented
 
@@ -35,7 +45,7 @@ figures that out by looking at the TTL (time to live) of the cached record.
 
 ### **`negative-cache`**
 
-This is a variant of `cache-mismatch` that checks specifically for negative caching.
+This is a variant of `cache-mismatch` that checks specifically for negative caching (a cached "this domain does not exist" response).
 
 #### How it's implemented:
 
@@ -50,6 +60,8 @@ You just gotta wait! `DNS Doctor` will tell you how approximately you have to wa
 figures that out by looking at the TTL (time to live) on the domain's SOA record.
 
 ### **`bad-cname`**
+
+Checks if your domain's CNAME doesn't resolve to anything.
 
 #### How it's implemented:
 
@@ -72,8 +84,8 @@ You might have made a typo in your CNAME record.
 
 #### How `cname-root` is implemented:
 
-1. Look up the top-level domain name with the local resolver (if you looked up `some.domain.com`, this is the equivalent of `dig domain.com`)
-2. Check if it returns a CNAME record. If so, fail this check
+1. Check if the domain has a CNAME record
+2. If it does, and if it's not a subdomain (`blah.example.com` is ok, `example.com` is not), fail the check
 
 #### How to fix `cname-root`:
 
