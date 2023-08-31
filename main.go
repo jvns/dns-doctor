@@ -15,8 +15,8 @@ type Config struct {
 }
 
 type DigOutputs struct {
-	trace             []DNSResponse
-	resolver          DNSResponse
+	trace []DNSResponse
+	//resolver          DNSResponse
 	resolverNoRecurse DNSResponse
 }
 
@@ -53,12 +53,13 @@ func main() {
 
 func doctor(config *Config) {
 	outputs := &DigOutputs{
-		trace:             runDigTrace(config),
-		resolver:          runDig(config),
+		trace: runDigTrace(config),
+		//resolver:          runDig(config),
 		resolverNoRecurse: runDig(config),
 	}
 
-	checkNoRecord(config, outputs)
+	runCheck(CheckNoRecord, config, outputs)
+	runCheck(CheckCacheMismatch, config, outputs)
 }
 
 func runDigTrace(config *Config) []DNSResponse {

@@ -15,6 +15,10 @@ type Record struct {
 	Data  string
 }
 
+func (r *Record) String() string {
+	return fmt.Sprintf("%s %d %s %s", r.Name, r.TTL, r.Type, r.Data)
+}
+
 type Question struct {
 	Name  string
 	Type  string
