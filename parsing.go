@@ -22,13 +22,13 @@ type Question struct {
 }
 
 type DNSResponse struct {
-	status     string
-	serverIP   string
-	serverName string
-	question   Question
-	answer     []Record
-	authority  []Record
-	additional []Record
+	Status      string
+	ServerIP    string
+	ServerName  string
+	Question    Question
+	Answers     []Record
+	Authorities []Record
+	Additionals []Record
 }
 
 type TraceOutput struct {
@@ -70,11 +70,11 @@ func parseDigOutput(output string) DNSResponse {
 	lines := strings.Split(output, "\n")
 	part := "start"
 	resp := DNSResponse{
-		status:     "",
-		question:   Question{},
-		answer:     make([]Record, 0),
-		authority:  make([]Record, 0),
-		additional: make([]Record, 0),
+		Status:      "",
+		Question:    Question{},
+		Answers:     make([]Record, 0),
+		Authorities: make([]Record, 0),
+		Additionals: make([]Record, 0),
 	}
 
 	for _, line := range lines {
@@ -92,7 +92,7 @@ func parseDigOutput(output string) DNSResponse {
 			fields := strings.Fields(line)
 			for i, field := range fields {
 				if field == "status:" {
-					resp.status = fields[i+1][:len(fields[i+1])-1]
+					resp.Status = fields[i+1][:len(fields[i+1])-1]
 					break
 				}
 			}
@@ -104,16 +104,16 @@ func parseDigOutput(output string) DNSResponse {
 			if len(matches) != 4 {
 				panic(fmt.Sprintf("Invalid server line: %s", line))
 			}
-			resp.serverIP = fmt.Sprintf("%s:%s", matches[1], matches[2])
-			resp.serverName = matches[3]
+			resp.ServerIP = fmt.Sprintf("%s:%s", matches[1], matches[2])
+			resp.ServerName = matches[3]
 		} else if part == "question" {
-			resp.question = parseQuestion(line)
+			resp.Question = parseQuestion(line)
 		} else if part == "answer" {
-			resp.answer = append(resp.answer, parseRecord(line))
+			resp.Answers = append(resp.Answers, parseRecord(line))
 		} else if part == "authority" {
-			resp.authority = append(resp.authority, parseRecord(line))
+			resp.Authorities = append(resp.Authorities, parseRecord(line))
 		} else if part == "additional" {
-			resp.additional = append(resp.additional, parseRecord(line))
+			resp.Additionals = append(resp.Additionals, parseRecord(line))
 		}
 
 	}

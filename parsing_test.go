@@ -23,22 +23,22 @@ func TestParseBasic(t *testing.T) {
 	got := parseDigOutput(readFile(t, "testdata/dig_example_com.txt"))
 
 	autogold.Expect(DNSResponse{
-		status: "NOERROR", serverIP: "192.168.1.1:53",
-		serverName: "192.168.1.1",
-		question: Question{
+		Status: "NOERROR", ServerIP: "192.168.1.1:53",
+		ServerName: "192.168.1.1",
+		Question: Question{
 			name:  "example.com.",
 			typ:   "A",
 			class: "IN",
 		},
-		answer: []Record{{
+		Answers: []Record{{
 			name:  "example.com.",
 			ttl:   75789,
 			class: "IN",
 			typ:   "A",
 			data:  "93.184.216.34",
 		}},
-		authority:  []Record{},
-		additional: []Record{},
+		Authorities: []Record{},
+		Additionals: []Record{},
 	}).Equal(t, got)
 }
 
@@ -46,15 +46,15 @@ func TestParseRootNameserver(t *testing.T) {
 	got := parseDigOutput(readFile(t, "testdata/dig_example_com_authority.txt"))
 
 	autogold.Expect(DNSResponse{
-		status: "NOERROR", serverIP: "198.41.0.4:53",
-		serverName: "a.root-servers.net",
-		question: Question{
+		Status: "NOERROR", ServerIP: "198.41.0.4:53",
+		ServerName: "a.root-servers.net",
+		Question: Question{
 			name:  "example.com.",
 			typ:   "A",
 			class: "IN",
 		},
-		answer: []Record{},
-		authority: []Record{
+		Answers: []Record{},
+		Authorities: []Record{
 			{
 				name:  "com.",
 				ttl:   172800,
@@ -147,7 +147,7 @@ func TestParseRootNameserver(t *testing.T) {
 				data:  "m.gtld-servers.net.",
 			},
 		},
-		additional: []Record{
+		Additionals: []Record{
 			{
 				name:  "a.gtld-servers.net.",
 				ttl:   172800,
@@ -338,15 +338,15 @@ func TestTrace(t *testing.T) {
 	got := parseDigTraceOutput(readFile(t, "testdata/dig_trace_example_com.txt"))
 	autogold.Expect([]DNSResponse{
 		{
-			status:     "NOERROR",
-			serverIP:   "192.168.1.1:53",
-			serverName: "192.168.1.1",
-			question: Question{
+			Status:     "NOERROR",
+			ServerIP:   "192.168.1.1:53",
+			ServerName: "192.168.1.1",
+			Question: Question{
 				name:  ".",
 				typ:   "NS",
 				class: "IN",
 			},
-			answer: []Record{
+			Answers: []Record{
 				{
 					name:  ".",
 					ttl:   517950,
@@ -446,8 +446,8 @@ func TestTrace(t *testing.T) {
 					data:  "NS 8 0 518400 20230912210000 20230830200000 11019 . iKKR8LMlixZs53amGnK69lRbb91ttySCHMWjIOzbI3eYCOL4f5ZnyJuY yzo1VWA/TlMCM4NJzScyvIVJS5jaz2oKEUDLzm7v9xoFhYMbBL7y7fc+ 8ByPRZ5rYOcRjhimlToRnAPxh8iXG5xsAmlCJ8+vy00eL7l3Sn8bsQaf x7cvq5ZVYpUZ1jf8S1VhJjHrw8iTNYZHPqmoL7DrzszkKSTrZD5Bmzzt I9qVbpWV69F5cyr/uGo1DhH5Sscz0TVGPBAErFW+EfdO/D491T3Bv1bE MR7+m5TwuQTOs6u4vztRyz+GxvMweSl6xoLxhJ75J+D4snnNZPr+EGGz thIwOQ==",
 				},
 			},
-			authority: []Record{},
-			additional: []Record{
+			Authorities: []Record{},
+			Additionals: []Record{
 				{
 					name:  "a.root-servers.net.",
 					ttl:   517950,
@@ -633,16 +633,16 @@ func TestTrace(t *testing.T) {
 			},
 		},
 		{
-			status:     "NOERROR",
-			serverIP:   "199.7.83.42:53",
-			serverName: "l.root-servers.net",
-			question: Question{
+			Status:     "NOERROR",
+			ServerIP:   "199.7.83.42:53",
+			ServerName: "l.root-servers.net",
+			Question: Question{
 				name:  "example.com.",
 				typ:   "A",
 				class: "IN",
 			},
-			answer: []Record{},
-			authority: []Record{
+			Answers: []Record{},
+			Authorities: []Record{
 				{
 					name:  "com.",
 					ttl:   172800,
@@ -749,7 +749,7 @@ func TestTrace(t *testing.T) {
 					data:  "DS 8 1 86400 20230912210000 20230830200000 11019 . b0f9IhTkzzSIFp5ioeI5YJbcH3/hAdM1kOxkOF3Tl9f69Pytjw2OdA2S NVkS9Ul1SlZYapCa+OJiyHbDjiV1Ub/kqk6yzg6E1JwVQObfHH9j8zvx SmLzCMLuTVGCFZKNyRa0K6axO+x+ZYpwzul6IVzKREsQC9JdUogygyrO ZymGxDMvSj6d9UXT+g2xVGwfuncFklYAdrtM+z5xYIy0XXQbpsZ6Dqsv T1LR/GKAwGGjNXE2RICg8prz92t36G4WUO/AJuf8FoYGFReK3Vhh4G1H 6AXxSN7tYG2fSJ74qPe95xIV7O5JqULVKdKtCYDo3o71+AziVpAbNS4Z vOEbog==",
 				},
 			},
-			additional: []Record{
+			Additionals: []Record{
 				{
 					name:  "a.gtld-servers.net.",
 					ttl:   172800,
@@ -935,16 +935,16 @@ func TestTrace(t *testing.T) {
 			},
 		},
 		{
-			status:     "NOERROR",
-			serverIP:   "192.35.51.30:53",
-			serverName: "f.gtld-servers.net",
-			question: Question{
+			Status:     "NOERROR",
+			ServerIP:   "192.35.51.30:53",
+			ServerName: "f.gtld-servers.net",
+			Question: Question{
 				name:  "example.com.",
 				typ:   "A",
 				class: "IN",
 			},
-			answer: []Record{},
-			authority: []Record{
+			Answers: []Record{},
+			Authorities: []Record{
 				{
 					name:  "example.com.",
 					ttl:   172800,
@@ -974,18 +974,18 @@ func TestTrace(t *testing.T) {
 					data:  "DS 8 2 86400 20230906062331 20230830051331 4459 com. GMHHwISDn8Yh8+8Y/aTXu9XkZCobOWJ94nPPPYTvRvpUDJfMHV8k2aSO 9lW6xBjeaWtl9MVBRUKIh6CgLH+hZ/V0UHAROh6mt6jKa/3W35OqcULN 8aRsGujntVlByyD3/1Kxki0S8x+wbbymShuqmXC0KQy7Wl0mkimOCwZD +IDk1UhC5zjZnQjFKmJ4SVLb7ayOsbsoQoufx3BNk2kFig==",
 				},
 			},
-			additional: []Record{},
+			Additionals: []Record{},
 		},
 		{
-			status:     "NOERROR",
-			serverIP:   "199.43.133.53:53",
-			serverName: "b.iana-servers.net",
-			question: Question{
+			Status:     "NOERROR",
+			ServerIP:   "199.43.133.53:53",
+			ServerName: "b.iana-servers.net",
+			Question: Question{
 				name:  "example.com.",
 				typ:   "A",
 				class: "IN",
 			},
-			answer: []Record{
+			Answers: []Record{
 				{
 					name:  "example.com.",
 					ttl:   86400,
@@ -1001,7 +1001,7 @@ func TestTrace(t *testing.T) {
 					data:  "A 13 2 86400 20230909025252 20230819070125 2061 example.com. 8adF5DxheCltQ61A6m5kHUfzgsuhY3zPscP9YDB16sDn2bk6Rw7Fz+gI MiixWE2SkLFl7LWN5cLN7B/aGBGUlw==",
 				},
 			},
-			authority: []Record{
+			Authorities: []Record{
 				{
 					name:  "example.com.",
 					ttl:   86400,
@@ -1024,7 +1024,7 @@ func TestTrace(t *testing.T) {
 					data:  "NS 13 2 86400 20230909053651 20230819070125 2061 example.com. BbDbIs5CLfsfydzBZOcDqZfwRo/YyDZKeKTs3C6RzGgcC5RpBaXYk7Oh XTZ3OjM3y7YDJVNtuPGcB8Ti7WlMZg==",
 				},
 			},
-			additional: []Record{},
+			Additionals: []Record{},
 		},
 	}).Equal(t, got)
 }
