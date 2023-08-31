@@ -1,6 +1,6 @@
 ## dns doctor
 
-**PROTOTYPE, PROBABLY HAS ONE MILLION BUGS**
+**PROTOTYPE, PRETTY CRAPPY, PROBABLY HAS ONE MILLION BUGS**
 
 You give it a domain name where something is wrong, and it runs a bunch of checks to try to figure out the reason.
 
