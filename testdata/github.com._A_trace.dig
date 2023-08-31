@@ -1,0 +1,178 @@
+
+; <<>> DiG 9.18.16 <<>> +trace +all A github.com.
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 9676
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 14, AUTHORITY: 0, ADDITIONAL: 27
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 1232
+;; QUESTION SECTION:
+;.				IN	NS
+
+;; ANSWER SECTION:
+.			510679	IN	NS	a.root-servers.net.
+.			510679	IN	NS	b.root-servers.net.
+.			510679	IN	NS	c.root-servers.net.
+.			510679	IN	NS	d.root-servers.net.
+.			510679	IN	NS	e.root-servers.net.
+.			510679	IN	NS	f.root-servers.net.
+.			510679	IN	NS	g.root-servers.net.
+.			510679	IN	NS	h.root-servers.net.
+.			510679	IN	NS	i.root-servers.net.
+.			510679	IN	NS	j.root-servers.net.
+.			510679	IN	NS	k.root-servers.net.
+.			510679	IN	NS	l.root-servers.net.
+.			510679	IN	NS	m.root-servers.net.
+.			510679	IN	RRSIG	NS 8 0 518400 20230913050000 20230831040000 11019 . sTegTb4O1m5gsG6/bNYMthI0KmGTq0sqyKzys6J9GjN05eew+r+hommx jkUk2k0SL8gFMvEOTCmObUw94Ln6qHK5FbyThvQFvxzF7TMBc+YIVEAU 9qYKNNcB+kXOdkrSYVUjFFKfIWbczm/4XhvAv8GkZqbNKEJwkgyKi9bH ippRdD67TNBWoaij+Q8XvlwnHXP3xfiptcTuxtsx8zSlBzVvKMb2GvlL W/Uf6QR+eL5QstjrqOv6TCMPz5UBtEQbuPBiZWArdsERT/3WH8Qir6Rq sFGpVbXijVDFykKxR3Cjby5zB/iQGlAdxFUY2uwJvvVu1dR/WE/G2IoG OUsTMw==
+
+;; ADDITIONAL SECTION:
+a.root-servers.net.	510679	IN	A	198.41.0.4
+a.root-servers.net.	510679	IN	AAAA	2001:503:ba3e::2:30
+b.root-servers.net.	510679	IN	A	199.9.14.201
+b.root-servers.net.	510679	IN	AAAA	2001:500:200::b
+c.root-servers.net.	510679	IN	A	192.33.4.12
+c.root-servers.net.	510679	IN	AAAA	2001:500:2::c
+d.root-servers.net.	510679	IN	A	199.7.91.13
+d.root-servers.net.	510679	IN	AAAA	2001:500:2d::d
+e.root-servers.net.	510679	IN	A	192.203.230.10
+e.root-servers.net.	510679	IN	AAAA	2001:500:a8::e
+f.root-servers.net.	510679	IN	A	192.5.5.241
+f.root-servers.net.	510679	IN	AAAA	2001:500:2f::f
+g.root-servers.net.	510679	IN	A	192.112.36.4
+g.root-servers.net.	510679	IN	AAAA	2001:500:12::d0d
+h.root-servers.net.	510679	IN	A	198.97.190.53
+h.root-servers.net.	510679	IN	AAAA	2001:500:1::53
+i.root-servers.net.	510679	IN	A	192.36.148.17
+i.root-servers.net.	510679	IN	AAAA	2001:7fe::53
+j.root-servers.net.	510679	IN	A	192.58.128.30
+j.root-servers.net.	510679	IN	AAAA	2001:503:c27::2:30
+k.root-servers.net.	510679	IN	A	193.0.14.129
+k.root-servers.net.	510679	IN	AAAA	2001:7fd::1
+l.root-servers.net.	510679	IN	A	199.7.83.42
+l.root-servers.net.	510679	IN	AAAA	2001:500:9f::42
+m.root-servers.net.	510679	IN	A	202.12.27.33
+m.root-servers.net.	510679	IN	AAAA	2001:dc3::35
+
+;; Query time: 24 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1) (UDP)
+;; WHEN: Thu Aug 31 07:46:03 EDT 2023
+;; MSG SIZE  rcvd: 1097
+
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 9305
+;; flags: qr; QUERY: 1, ANSWER: 0, AUTHORITY: 15, ADDITIONAL: 27
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 1472
+;; QUESTION SECTION:
+;github.com.			IN	A
+
+;; AUTHORITY SECTION:
+com.			172800	IN	NS	i.gtld-servers.net.
+com.			172800	IN	NS	e.gtld-servers.net.
+com.			172800	IN	NS	a.gtld-servers.net.
+com.			172800	IN	NS	d.gtld-servers.net.
+com.			172800	IN	NS	j.gtld-servers.net.
+com.			172800	IN	NS	f.gtld-servers.net.
+com.			172800	IN	NS	g.gtld-servers.net.
+com.			172800	IN	NS	k.gtld-servers.net.
+com.			172800	IN	NS	c.gtld-servers.net.
+com.			172800	IN	NS	b.gtld-servers.net.
+com.			172800	IN	NS	h.gtld-servers.net.
+com.			172800	IN	NS	l.gtld-servers.net.
+com.			172800	IN	NS	m.gtld-servers.net.
+com.			86400	IN	DS	30909 8 2 E2D3C916F6DEEAC73294E8268FB5885044A833FC5459588F4A9184CF C41A5766
+com.			86400	IN	RRSIG	DS 8 1 86400 20230913050000 20230831040000 11019 . SDSqlwjZKrqNVP2SV+cRQEaiBBNvx8tIP8+tbNmNGyi9LqcDEKCWB5J8 3qfhueg/Wg31In3vFA7InAoeCciGeBXegT+iNdPNRt+/L2oXk5WYteQI YpQ9TvjilFBmvbfrfoJUxCe4yQsN7cMsvOB17e9OpWAdZxTdjra7qT+I GkHCzIhWJJ0y1LlpqGOSwPff2N3QABYzndPE5K/8Jn0kQaXS4yPSKN/G 6uGag6wrdb3e6wcLwg0iOe0B7cjBODKJF1OfnfIjdjd59w8uQfK8Zs9z 4etaabDHVcYrLCtVZeRU3uZ8jDYhw7O6EqjBQYgUZkEMe5TDIML7M+CT eP70VQ==
+
+;; ADDITIONAL SECTION:
+i.gtld-servers.net.	172800	IN	A	192.43.172.30
+i.gtld-servers.net.	172800	IN	AAAA	2001:503:39c1::30
+e.gtld-servers.net.	172800	IN	A	192.12.94.30
+e.gtld-servers.net.	172800	IN	AAAA	2001:502:1ca1::30
+a.gtld-servers.net.	172800	IN	A	192.5.6.30
+a.gtld-servers.net.	172800	IN	AAAA	2001:503:a83e::2:30
+d.gtld-servers.net.	172800	IN	A	192.31.80.30
+d.gtld-servers.net.	172800	IN	AAAA	2001:500:856e::30
+j.gtld-servers.net.	172800	IN	A	192.48.79.30
+j.gtld-servers.net.	172800	IN	AAAA	2001:502:7094::30
+f.gtld-servers.net.	172800	IN	A	192.35.51.30
+f.gtld-servers.net.	172800	IN	AAAA	2001:503:d414::30
+g.gtld-servers.net.	172800	IN	A	192.42.93.30
+g.gtld-servers.net.	172800	IN	AAAA	2001:503:eea3::30
+k.gtld-servers.net.	172800	IN	A	192.52.178.30
+k.gtld-servers.net.	172800	IN	AAAA	2001:503:d2d::30
+c.gtld-servers.net.	172800	IN	A	192.26.92.30
+c.gtld-servers.net.	172800	IN	AAAA	2001:503:83eb::30
+b.gtld-servers.net.	172800	IN	A	192.33.14.30
+b.gtld-servers.net.	172800	IN	AAAA	2001:503:231d::2:30
+h.gtld-servers.net.	172800	IN	A	192.54.112.30
+h.gtld-servers.net.	172800	IN	AAAA	2001:502:8cc::30
+l.gtld-servers.net.	172800	IN	A	192.41.162.30
+l.gtld-servers.net.	172800	IN	AAAA	2001:500:d937::30
+m.gtld-servers.net.	172800	IN	A	192.55.83.30
+m.gtld-servers.net.	172800	IN	AAAA	2001:501:b1f9::30
+
+;; Query time: 14 msec
+;; SERVER: 192.5.5.241#53(f.root-servers.net) (UDP)
+;; WHEN: Thu Aug 31 07:46:03 EDT 2023
+;; MSG SIZE  rcvd: 1170
+
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 31926
+;; flags: qr; QUERY: 1, ANSWER: 0, AUTHORITY: 12, ADDITIONAL: 2
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+;; QUESTION SECTION:
+;github.com.			IN	A
+
+;; AUTHORITY SECTION:
+github.com.		172800	IN	NS	ns-520.awsdns-01.net.
+github.com.		172800	IN	NS	ns-421.awsdns-52.com.
+github.com.		172800	IN	NS	ns-1707.awsdns-21.co.uk.
+github.com.		172800	IN	NS	ns-1283.awsdns-32.org.
+github.com.		172800	IN	NS	dns1.p08.nsone.net.
+github.com.		172800	IN	NS	dns2.p08.nsone.net.
+github.com.		172800	IN	NS	dns3.p08.nsone.net.
+github.com.		172800	IN	NS	dns4.p08.nsone.net.
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 86400 IN NSEC3 1 1 0 - CK0Q2D6NI4I7EQH8NA30NS61O48UL8G5 NS SOA RRSIG DNSKEY NSEC3PARAM
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 86400 IN RRSIG NSEC3 8 2 86400 20230907042432 20230831031432 4459 com. kfAa2AgL3x3C+IosF42yh93sqnQ7+rZxcAopsjOaXsD870wdt6cEDNeB e/3ssjbBsk0tn6mV095Q1LF1ca8c0rpH/fySsq251qNcNiMl6Pd8CUrj mDbXcxX0w8H+4yaARxywy4FDdcwRPtJcHcEQK6PElT0le0lPsQ/DekdS EpBdYJ196p6aN4KFDTuCs00wonokUDdxdImdbYZeVON0PQ==
+4KB4DFS71LEP8G8P8VT4CCUSQNL4CNCS.com. 86400 IN NSEC3 1 1 0 - 4KB4PTQQ5CTA7POCTGM7RUFC8B1RKTEU NS DS RRSIG
+4KB4DFS71LEP8G8P8VT4CCUSQNL4CNCS.com. 86400 IN RRSIG NSEC3 8 2 86400 20230904045825 20230828034825 4459 com. BXuaqjYx8Q4NQZJPtnBTXsXdBF5bWOFO2Y8EV4OTTFb7+++mJdg4AqwW MjJWFVpDXJhjQdsk+AVvcjX5npLkFLrZgSgUVoguGOViyurzIg2ePSrx 6T17xxEW/+K2+qUFLVikR59d2XWelafw5uAwpPQIRln026iTvrqINogT 4yc1TvWYuc1HAp3Q12+8osus/PuI3byByHFkXhT8V/eiuA==
+
+;; ADDITIONAL SECTION:
+ns-421.awsdns-52.com.	172800	IN	A	205.251.193.165
+
+;; Query time: 26 msec
+;; SERVER: 192.35.51.30#53(f.gtld-servers.net) (UDP)
+;; WHEN: Thu Aug 31 07:46:03 EDT 2023
+;; MSG SIZE  rcvd: 827
+
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 56583
+;; flags: qr aa ad; QUERY: 1, ANSWER: 1, AUTHORITY: 8, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+;; QUESTION SECTION:
+;github.com.			IN	A
+
+;; ANSWER SECTION:
+github.com.		60	IN	A	140.82.114.4
+
+;; AUTHORITY SECTION:
+github.com.		900	IN	NS	dns1.p08.nsone.net.
+github.com.		900	IN	NS	dns2.p08.nsone.net.
+github.com.		900	IN	NS	dns3.p08.nsone.net.
+github.com.		900	IN	NS	dns4.p08.nsone.net.
+github.com.		900	IN	NS	ns-1283.awsdns-32.org.
+github.com.		900	IN	NS	ns-1707.awsdns-21.co.uk.
+github.com.		900	IN	NS	ns-421.awsdns-52.com.
+github.com.		900	IN	NS	ns-520.awsdns-01.net.
+
+;; Query time: 21 msec
+;; SERVER: 205.251.197.3#53(ns-1283.awsdns-32.org) (UDP)
+;; WHEN: Thu Aug 31 07:46:03 EDT 2023
+;; MSG SIZE  rcvd: 278
+

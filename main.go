@@ -18,6 +18,9 @@ type DigOutputs struct {
 	trace []DNSResponse
 	//resolver          DNSResponse
 	resolverNoRecurse DNSResponse
+	cname             string
+	cnameTrace        []DNSResponse
+	cnameNoRecurse    *DNSResponse
 }
 
 func main() {
@@ -52,26 +55,35 @@ func main() {
 }
 
 func doctor(config *Config) {
+	trace := runDigTrace(config)
+	cname := getCNAME(trace)
 	outputs := &DigOutputs{
-		trace: runDigTrace(config),
-		//resolver:          runDig(config),
+		trace:             trace,
+		cname:             cname,
 		resolverNoRecurse: runDigNorecurse(config),
+		cnameTrace:        runDigCNAMETrace(config, cname),
+		cnameNoRecurse:    runDigCNAMENorecurse(config, cname),
 	}
 
 	runCheck(CheckNoRecord, config, outputs)
 	runCheck(CheckCacheMismatch, config, outputs)
+	runCheck(CheckBadCNAME, config, outputs)
 }
 
-func runDigTrace(config *Config) []DNSResponse {
-	// run dig +all +trace {record_type} {domain}
-	cmd := exec.Command("dig", "+trace", "+all", config.RecordType, config.Domain)
+func run(cmd *exec.Cmd) string {
 	stdout, err := cmd.CombinedOutput()
 	if err != nil {
 		fmt.Printf("error running `%v`: %v", cmd, err)
 		os.Exit(1)
 	}
-	trace := parseDigTraceOutput(string(stdout))
-	writeFile(config.Domain+"_"+config.RecordType+"_trace.dig", string(stdout))
+	return string(stdout)
+}
+
+func runDigTrace(config *Config) []DNSResponse {
+	cmd := exec.Command("dig", "+trace", "+all", config.RecordType, config.Domain)
+	stdout := run(cmd)
+	writeFile(config.Domain+"_"+config.RecordType+"_trace.dig", stdout)
+	trace := parseDigTraceOutput(stdout)
 	if len(trace) == 0 {
 		fmt.Println("No trace output found")
 		os.Exit(1)
@@ -80,27 +92,48 @@ func runDigTrace(config *Config) []DNSResponse {
 }
 
 func runDigNorecurse(config *Config) DNSResponse {
-	// run dig +all +trace {record_type} {domain}
 	cmd := exec.Command("dig", "+all", "+norecurse", config.RecordType, config.Domain)
-	stdout, err := cmd.Output()
-	if err != nil {
-		fmt.Printf("error running `%v`: %v", cmd, err)
-		os.Exit(1)
-	}
+	stdout := run(cmd)
 	writeFile(config.Domain+"_"+config.RecordType+"_norecurse.dig", string(stdout))
-	return parseDigOutput(string(stdout))
+	return parseDigOutput(stdout)
 }
 
 func runDig(config *Config) DNSResponse {
-	// run dig +all +trace {record_type} {domain}
 	cmd := exec.Command("dig", "+all", config.RecordType, config.Domain)
-	stdout, err := cmd.Output()
-	if err != nil {
-		fmt.Printf("error running `%v`: %v", cmd, err)
-		os.Exit(1)
-	}
+	stdout := run(cmd)
 	writeFile(config.Domain+"_"+config.RecordType+".dig", string(stdout))
-	return parseDigOutput(string(stdout))
+	return parseDigOutput(stdout)
+}
+
+func getCNAME(trace []DNSResponse) string {
+	records := trace[len(trace)-1].Answers
+	for _, record := range records {
+		if record.Type == "CNAME" {
+			return record.Data
+		}
+	}
+	return ""
+}
+
+func runDigCNAMETrace(rootConfig *Config, cname string) []DNSResponse {
+	if cname == "" {
+		return nil
+	}
+	return runDigTrace(&Config{
+		RecordType: rootConfig.RecordType,
+		Domain:     cname,
+	})
+}
+
+func runDigCNAMENorecurse(rootConfig *Config, cname string) *DNSResponse {
+	if cname == "" {
+		return nil
+	}
+	resp := runDigNorecurse(&Config{
+		RecordType: rootConfig.RecordType,
+		Domain:     cname,
+	})
+	return &resp
 }
 
 func writeFile(filename string, contents string) {

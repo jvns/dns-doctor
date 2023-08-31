@@ -1,0 +1,21 @@
+
+; <<>> DiG 9.18.16 <<>> +all +norecurse A www.github.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 51624
+;; flags: qr ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;www.github.com.			IN	A
+
+;; ANSWER SECTION:
+www.github.com.		3595	IN	CNAME	github.com.
+github.com.		55	IN	A	140.82.114.4
+
+;; Query time: 15 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1) (UDP)
+;; WHEN: Thu Aug 31 07:46:03 EDT 2023
+;; MSG SIZE  rcvd: 73
+
