@@ -6,6 +6,8 @@ You give it a domain name where something is wrong, and it runs a bunch of check
 
 **Usage**: `dns-doctor <optional-record-type> your-domain.com` 
 
+You can install it with `go install github.com/jvns/dns-doctor@latest`
+
 ## How it works
 
 It basically just runs `dig +trace` and `dig +norecurse` on your domain, parses
