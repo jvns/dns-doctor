@@ -1,0 +1,17 @@
+
+; <<>> DiG 9.18.16 <<>> +all +norecurse A examplecat.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: SERVFAIL, id: 41532
+;; flags: qr ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;examplecat.com.			IN	A
+
+;; Query time: 51 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1) (UDP)
+;; WHEN: Thu Aug 31 08:03:59 EDT 2023
+;; MSG SIZE  rcvd: 43
+

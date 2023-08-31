@@ -1,0 +1,134 @@
+
+; <<>> DiG 9.18.16 <<>> +trace +all A jvns.ca
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 19607
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 14, AUTHORITY: 0, ADDITIONAL: 27
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 1232
+;; QUESTION SECTION:
+;.				IN	NS
+
+;; ANSWER SECTION:
+.			516707	IN	NS	a.root-servers.net.
+.			516707	IN	NS	b.root-servers.net.
+.			516707	IN	NS	c.root-servers.net.
+.			516707	IN	NS	d.root-servers.net.
+.			516707	IN	NS	e.root-servers.net.
+.			516707	IN	NS	f.root-servers.net.
+.			516707	IN	NS	g.root-servers.net.
+.			516707	IN	NS	h.root-servers.net.
+.			516707	IN	NS	i.root-servers.net.
+.			516707	IN	NS	j.root-servers.net.
+.			516707	IN	NS	k.root-servers.net.
+.			516707	IN	NS	l.root-servers.net.
+.			516707	IN	NS	m.root-servers.net.
+.			516707	IN	RRSIG	NS 8 0 518400 20230913050000 20230831040000 11019 . sTegTb4O1m5gsG6/bNYMthI0KmGTq0sqyKzys6J9GjN05eew+r+hommx jkUk2k0SL8gFMvEOTCmObUw94Ln6qHK5FbyThvQFvxzF7TMBc+YIVEAU 9qYKNNcB+kXOdkrSYVUjFFKfIWbczm/4XhvAv8GkZqbNKEJwkgyKi9bH ippRdD67TNBWoaij+Q8XvlwnHXP3xfiptcTuxtsx8zSlBzVvKMb2GvlL W/Uf6QR+eL5QstjrqOv6TCMPz5UBtEQbuPBiZWArdsERT/3WH8Qir6Rq sFGpVbXijVDFykKxR3Cjby5zB/iQGlAdxFUY2uwJvvVu1dR/WE/G2IoG OUsTMw==
+
+;; ADDITIONAL SECTION:
+a.root-servers.net.	516707	IN	A	198.41.0.4
+a.root-servers.net.	516707	IN	AAAA	2001:503:ba3e::2:30
+b.root-servers.net.	516707	IN	A	199.9.14.201
+b.root-servers.net.	516707	IN	AAAA	2001:500:200::b
+c.root-servers.net.	516707	IN	A	192.33.4.12
+c.root-servers.net.	516707	IN	AAAA	2001:500:2::c
+d.root-servers.net.	516707	IN	A	199.7.91.13
+d.root-servers.net.	516707	IN	AAAA	2001:500:2d::d
+e.root-servers.net.	516707	IN	A	192.203.230.10
+e.root-servers.net.	516707	IN	AAAA	2001:500:a8::e
+f.root-servers.net.	516707	IN	A	192.5.5.241
+f.root-servers.net.	516707	IN	AAAA	2001:500:2f::f
+g.root-servers.net.	516707	IN	A	192.112.36.4
+g.root-servers.net.	516707	IN	AAAA	2001:500:12::d0d
+h.root-servers.net.	516707	IN	A	198.97.190.53
+h.root-servers.net.	516707	IN	AAAA	2001:500:1::53
+i.root-servers.net.	516707	IN	A	192.36.148.17
+i.root-servers.net.	516707	IN	AAAA	2001:7fe::53
+j.root-servers.net.	516707	IN	A	192.58.128.30
+j.root-servers.net.	516707	IN	AAAA	2001:503:c27::2:30
+k.root-servers.net.	516707	IN	A	193.0.14.129
+k.root-servers.net.	516707	IN	AAAA	2001:7fd::1
+l.root-servers.net.	516707	IN	A	199.7.83.42
+l.root-servers.net.	516707	IN	AAAA	2001:500:9f::42
+m.root-servers.net.	516707	IN	A	202.12.27.33
+m.root-servers.net.	516707	IN	AAAA	2001:dc3::35
+
+;; Query time: 29 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1) (UDP)
+;; WHEN: Thu Aug 31 07:59:42 EDT 2023
+;; MSG SIZE  rcvd: 1097
+
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 58861
+;; flags: qr; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 9
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 1232
+;; QUESTION SECTION:
+;jvns.ca.			IN	A
+
+;; AUTHORITY SECTION:
+ca.			172800	IN	NS	c.ca-servers.ca.
+ca.			172800	IN	NS	d.ca-servers.ca.
+ca.			172800	IN	NS	j.ca-servers.ca.
+ca.			172800	IN	NS	any.ca-servers.ca.
+ca.			86400	IN	DS	43787 8 2 2AF70B49C542B7DACEC2D4754651598B740EF1D79E7A839B32BC7F7E 96039A2C
+ca.			86400	IN	RRSIG	DS 8 1 86400 20230913050000 20230831040000 11019 . BfCeHBkxuvzp4+w2c7bZdSh221jm1W84s5qAa8pZn/3eQgYRUfn+N1IT m4cLtotDOM82fcpcakqsHuWPDDZUBRkhS76h5KdvnBOfMk5ysLrFd5IZ bVNnisUfg5rz65F0ctK+brMPN65oLQ/URvzE5Ka3/goTN6twU4d57B2e X+utpqB+uMqjZP7VhjG69NHKpLoAf9QKM04WWZdh1d9Bz+zSJ2TKocSQ VIaym4QKg3opJzhu80rJ7d+rsMzBnF/otL6wwgvMnC49TD4HqulXyKo8 Can0nTTdiDgk9uzbu60xWaEP9Z1GF5ZCqq+RaTpy+6Hv4cX+EzSuV2N/ THRXBg==
+
+;; ADDITIONAL SECTION:
+c.ca-servers.ca.	172800	IN	A	185.159.196.2
+d.ca-servers.ca.	172800	IN	A	45.142.220.101
+j.ca-servers.ca.	172800	IN	A	198.182.167.1
+any.ca-servers.ca.	172800	IN	A	199.4.144.2
+c.ca-servers.ca.	172800	IN	AAAA	2620:10a:8053::2
+d.ca-servers.ca.	172800	IN	AAAA	2a0e:dbc0::101
+j.ca-servers.ca.	172800	IN	AAAA	2001:500:83::1
+any.ca-servers.ca.	172800	IN	AAAA	2001:500:a7::2
+
+;; Query time: 23 msec
+;; SERVER: 193.0.14.129#53(k.root-servers.net) (UDP)
+;; WHEN: Thu Aug 31 07:59:42 EDT 2023
+;; MSG SIZE  rcvd: 624
+
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 36784
+;; flags: qr; QUERY: 1, ANSWER: 0, AUTHORITY: 7, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 1472
+;; QUESTION SECTION:
+;jvns.ca.			IN	A
+
+;; AUTHORITY SECTION:
+jvns.ca.		86400	IN	NS	ns-2-b.gandi.net.
+jvns.ca.		86400	IN	NS	ns-185-a.gandi.net.
+jvns.ca.		86400	IN	NS	ns-203-c.gandi.net.
+r66k981mhm0vmpsgv1djat7janroai95.ca. 3600 IN NSEC3 1 1 0 - R66PG9PTTIK20OKT0J69V3IS2M57VEK9 NS SOA RRSIG DNSKEY NSEC3PARAM
+ps06ntfs7gu2p5pkd6opn5s8a2sc1d3a.ca. 3600 IN NSEC3 1 1 0 - PS09ROMD0EL8D45DUP5MJ235DVB8488L NS DS RRSIG
+r66k981mhm0vmpsgv1djat7janroai95.ca. 3600 IN RRSIG NSEC3 8 2 3600 20230904155908 20230828223744 49461 ca. XThhrTW4s6iK660IcsfZUlHmXCPlLaaIuatJH9ezrDjY72fEGZ0whzPP 7HDOz+zqIk5TjGH8xyXvTGJFZR+htwj0st/bOEnQLJOzKddwwpmg6AZS j3AorHHh055XyjPi2q6U0rhgtKNHUm6KC+jRebZzwZsTzt3J0sAUnYeH Hsk=
+ps06ntfs7gu2p5pkd6opn5s8a2sc1d3a.ca. 3600 IN RRSIG NSEC3 8 2 3600 20230904165024 20230828213728 49461 ca. iP33fP2l+LUaFYvalbVYe4D2fNKz9bamWhdtX0gYjakM1+/vrrU+8qE8 xsABwFr1KA/aetQU6WE64DR8I4Q/PHQiS9U0DbApYi2fY3H1KwPEerLR I6J+w/1uq2jcUFOK3pKsZav4n2iuaY8EeD4Wvj5nWryv0+Hp6R00lPy0 vFs=
+
+;; Query time: 72 msec
+;; SERVER: 45.142.220.101#53(d.ca-servers.ca) (UDP)
+;; WHEN: Thu Aug 31 07:59:42 EDT 2023
+;; MSG SIZE  rcvd: 595
+
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 29856
+;; flags: qr aa; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 1232
+;; QUESTION SECTION:
+;jvns.ca.			IN	A
+
+;; ANSWER SECTION:
+jvns.ca.		20	IN	A	35.231.208.25
+jvns.ca.		20	IN	A	34.74.170.74
+
+;; Query time: 23 msec
+;; SERVER: 213.167.230.3#53(ns-2-b.gandi.net) (UDP)
+;; WHEN: Thu Aug 31 07:59:42 EDT 2023
+;; MSG SIZE  rcvd: 68
+
