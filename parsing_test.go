@@ -31,6 +31,29 @@ func TestParseBasic(t *testing.T) {
 	}).Equal(t, got)
 }
 
+func TestParseBasicV6(t *testing.T) {
+	got := parseDigOutput(readFile(t, "testdata/dig_example_com_v6.txt"))
+
+	autogold.Expect(DNSResponse{
+		Status: "NOERROR", ServerIP: "2001:4860:4860::8888:53",
+		ServerName: "2001:4860:4860::8888",
+		Question: Question{
+			Name:  "example.com.",
+			Type:  "AAAA",
+			Class: "IN",
+		},
+		Answers: []Record{{
+			Name:  "example.com.",
+			TTL:   21370,
+			Class: "IN",
+			Type:  "AAAA",
+			Data:  "2606:2800:220:1:248:1893:25c8:1946",
+		}},
+		Authorities: []Record{},
+		Additionals: []Record{},
+	}).Equal(t, got)
+}
+
 func TestParseRootNameserver(t *testing.T) {
 	got := parseDigOutput(readFile(t, "testdata/dig_example_com_authority.txt"))
 
