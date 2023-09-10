@@ -8,7 +8,7 @@ var CheckNegativeCache = &Check{
 }
 
 func checkNegativeCache(config *Config, outputs *DigOutputs) (*CheckResult, error) {
-	if outputs.resolverNoRecurse.Status != "NOERROR" && outputs.resolverNoRecurse.Status != "NXDOMAIN" {
+	if len(outputs.resolverNoRecurse.Answers) == 0 || (outputs.resolverNoRecurse.Status != "NOERROR" && outputs.resolverNoRecurse.Status != "NXDOMAIN") {
 		return &CheckResult{
 			Status:  true,
 			Message: fmt.Sprintf("Resolver doesn't have any records cached"),
